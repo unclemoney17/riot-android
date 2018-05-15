@@ -25,6 +25,9 @@ cache:
     - $HOME/.gradle/wrapper/
     - $HOME/.android/build-cache
 
+# Build with the development SDK
+before_script:
+  - /bin/sh ./set_debug_env.sh
 
 # Just build the project for now
-script: ./gradlew assembleAppRelease
+script: ./gradlew clean lintAppRelease assembleAppRelease --stacktrace --debug
